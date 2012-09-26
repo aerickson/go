@@ -236,6 +236,10 @@ __END__
         <section class="actions">
           <span class="hits">(<%= link.hits %>)</span>
 
+          <span class="edit">
+            <a href="/links/<%= link.id %>/edit" title="edit">E</a>
+          </span>
+
           <span class="remove">
             <a href="/links/<%= link.id %>/remove" onclick="return confirm('Are you sure?');" title="remove">X</a>
           </span>
