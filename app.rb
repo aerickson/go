@@ -280,6 +280,7 @@ __END__
     <input type="url" class="url" name="url" placeholder="URL" value="<%= link.url %>" required>
     <button>Edit</button>
     <button type="reset">Reset</button>
+    <button type="button" onclick="result=confirm('Are you sure you want to delete this link?'); if (result == true){ location = '/links/<%= link.id %>/delete'};">Delete</button>
     <button type="button" onclick="location.href = '/';">Cancel</button>
   </form>
 
