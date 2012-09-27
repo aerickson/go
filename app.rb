@@ -85,7 +85,7 @@ get '/links/opensearch.xml' do
   erb :opensearch, :layout => false
 end
 
-get '/links/:id/remove' do
+get '/links/:id/delete' do
   link = Link.find(:id => params[:id])
   halt 404 unless link
   link.destroy
@@ -153,11 +153,11 @@ __END__
         }
 
         .name {
-          width: 100px;
+          min-width: 100px;
         }
 
         .url {
-          width: 150px;
+          width: 400px;
         }
 
         .actions {
@@ -165,16 +165,20 @@ __END__
           text-align: right;
         }
 
-        .remove {
-          display: none;
+        .edit {
+          //display: none;
         }
 
-        .actions:hover .remove {
+        .delete {
+          //display: none;
+        }
+
+        .actions:hover .delete .edit {
           display: block;
         }
 
         .actions:hover .hits {
-          display: none;
+          //display: none;
         }
 
         hr {
@@ -237,11 +241,11 @@ __END__
           <span class="hits">(<%= link.hits %>)</span>
 
           <span class="edit">
-            <a href="/links/<%= link.id %>/edit" title="edit">E</a>
+            <a href="/links/<%= link.id %>/edit" title="edit">e</a>
           </span>
 
-          <span class="remove">
-            <a href="/links/<%= link.id %>/remove" onclick="return confirm('Are you sure?');" title="remove">X</a>
+          <span class="delete">
+            <a href="/links/<%= link.id %>/delete" onclick="return confirm('Are you sure?');" title="delete">d</a>
           </span>
         </section>
       </li>
