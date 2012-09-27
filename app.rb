@@ -95,15 +95,19 @@ end
 get '/links/:id/edit' do
   link = Link.find(:id => params[:id])
   halt 400, 'link not found' unless link
-  halt 400, 'name or url must be specified' unless params[:name] || params[:url]
-  if params[:name]
-    link.name = params[:name]
+  unless params[:action] == 'do_edit'
+    erb :edit, :locals => {:link => link}
+  else
+    halt 400, 'name or url must be specified' unless params[:name] || params[:url]
+    if params[:name]
+      link.name = params[:name]
+    end
+    if params[:url]
+      link.url = params[:url]
+    end
+    link.save
+    redirect '/'
   end
-  if params[:url]
-    link.url = params[:url]
-  end
-  link.save
-  redirect '/'
 end
 
 get '/:name/?*?' do
@@ -235,8 +239,8 @@ __END__
 
 @@ index
   <form method="post" action="/links">
-    <input type="text" name="name" placeholder="Name" required>
-    <input type="url" name="url" placeholder="URL" required>
+    <input type="text" class="name" name="name" placeholder="Name" required>
+    <input type="url" class="url" name="url" placeholder="URL" required>
     <button>Create</button>
   </form>
 
@@ -267,6 +271,22 @@ __END__
   </ul>
 
   <% if @links.empty? %><p>No results</p><% end %>
+
+@@ edit
+  <form method="get" action="/links/<%= link.id %>/edit">
+    <input type="hidden" name="action" value="do_edit">
+    <input type="text" class="name" name="name" placeholder="Name" value="<%= link.name %>" required>
+    <input type="url" class="url" name="url" placeholder="URL" value="<%= link.url %>" required>
+    <button>Edit</button>
+    <button type="reset">Reset</button>
+    <button type="button" onclick="location.href = '/';">Cancel</button>
+  </form>
+
+  <hr />
+
+  <span>&nbsp;</span>
+
+
 
 @@ opensearch
   <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
