@@ -172,11 +172,15 @@ __END__
         }
 
         .name {
-          min-width: 100px;
+          width: 100px;
         }
 
         .url {
-          width: 400px;
+          width: 300px;
+        }
+
+        .action_button {
+          width: 52px;
         }
 
         .actions {
@@ -242,7 +246,7 @@ __END__
   <form method="post" action="/links">
     <input type="text" class="name" name="name" placeholder="Name" required>
     <input type="url" class="url" name="url" placeholder="URL" required>
-    <button>Create</button>
+    <button class="action_button">Create</button>
   </form>
 
   <hr />
@@ -278,13 +282,17 @@ __END__
     <input type="hidden" name="action" value="do_edit">
     <input type="text" class="name" name="name" placeholder="Name" value="<%= link.name %>" required>
     <input type="url" class="url" name="url" placeholder="URL" value="<%= link.url %>" required>
-    <button>Edit</button>
-    <button type="reset">Reset</button>
-    <button type="button" onclick="result=confirm('Are you sure you want to delete this link?'); if (result == true){ location = '/links/<%= link.id %>/delete'};">Delete</button>
-    <button type="button" onclick="location.href = '/';">Cancel</button>
+    <button class="action_button">Edit</button>
+    </form>
+
+    <hr />
+    <section>
+      <button type="button" onclick="result=confirm('Are you sure you want to delete this link?'); if (result == true){ location = '/links/<%= link.id %>/delete'};">Delete</button>
+          <button type="button" onclick="location.href = '/';">Cancel</button>
+    </section>
   </form>
 
-  <hr />
+  <br>
 
   <span>hits: <%= link.hits %> | created on: <%= link.created_at %></span>
 
