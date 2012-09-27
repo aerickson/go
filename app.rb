@@ -49,7 +49,8 @@ post '/links' do
   begin
     Link.create(
       :name => params[:name],
-      :url  => params[:url]
+      :url  => params[:url],
+      :created_at => DateTime.now
     )
     redirect '/'
   rescue Sequel::ValidationFailed,
@@ -284,7 +285,7 @@ __END__
 
   <hr />
 
-  <span>&nbsp;</span>
+  <span>hits: <%= link.hits %> | created on: <%= link.created_at %></span>
 
 
 
