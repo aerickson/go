@@ -188,22 +188,6 @@ __END__
           text-align: right;
         }
 
-        .edit {
-          //display: none;
-        }
-
-        .delete {
-          //display: none;
-        }
-
-        .actions:hover .delete .edit {
-          display: block;
-        }
-
-        .actions:hover .hits {
-          //display: none;
-        }
-
         hr {
           background: 0;
           border: 0;
