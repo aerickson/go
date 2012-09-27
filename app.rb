@@ -87,8 +87,22 @@ end
 
 get '/links/:id/delete' do
   link = Link.find(:id => params[:id])
-  halt 404 unless link
+  halt 400, 'link not found' unless link
   link.destroy
+  redirect '/'
+end
+
+get '/links/:id/edit' do
+  link = Link.find(:id => params[:id])
+  halt 400, 'link not found' unless link
+  halt 400, 'name or url must be specified' unless params[:name] || params[:url]
+  if params[:name]
+    link.name = params[:name]
+  end
+  if params[:url]
+    link.url = params[:url]
+  end
+  link.save
   redirect '/'
 end
 
