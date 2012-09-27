@@ -241,11 +241,11 @@ __END__
           <span class="hits">(<%= link.hits %>)</span>
 
           <span class="edit">
-            <a href="/links/<%= link.id %>/edit" title="edit">e</a>
+            <a href="/links/<%= link.id %>/edit" title="edit" alt="edit">e</a>
           </span>
 
           <span class="delete">
-            <a href="/links/<%= link.id %>/delete" onclick="return confirm('Are you sure?');" title="delete">d</a>
+            <a href="/links/<%= link.id %>/delete" title="delete" onclick="return confirm('Are you sure you want to delete this link?');" title="delete">d</a>
           </span>
         </section>
       </li>
