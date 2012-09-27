@@ -232,7 +232,7 @@ __END__
     <% @links.each do |link| %>
       <li>
         <section class="name">
-          <a href="/<%= link.name %>"><%= link.name %></a>
+          <a href="/<%= link.name %>" target="_blank"><%= link.name %></a>
         </section>
 
         <section class="url" title="<%= link.url %>"><%= link.url %></section>
