@@ -1,8 +1,10 @@
-FROM ubuntu:12.04
+# source: https://github.com/gglachant/docker-puma
+
+FROM ubuntu:14.04
 MAINTAINER Gabriel Glachant <gglachant@gmail.com>
 
 ENV RUBY ruby
-ENV RUBY_VERSION 2.0.0-p481
+ENV RUBY_VERSION 1.9.3
 
 ENV DEBIAN_FRONTEND noninteractive
 
