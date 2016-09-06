@@ -33,7 +33,7 @@ end
 # Configuration
 
 configure do
-  set :erb, :escape_html => true
+  set :erb, :escape_html => false
   set :public_folder, Proc.new { File.join(root, "static") }
 end
 
