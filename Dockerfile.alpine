@@ -1,0 +1,24 @@
+# based on https://github.com/nicdoye/alpine-rvm/blob/master/Dockerfile
+
+# Pull base image
+FROM nicdoye/alpine-rvm-gcc
+
+RUN apk update && \
+    apk upgrade
+
+
+RUN su - rvm -c './.rvm/bin/rvm install 1.9 --disable-binary --movable --autolibs=0'
+
+# aje: for interactive
+RUN apk add --no-cache zsh
+
+
+
+
+#################### CLEANUP & NEUTER
+
+# Delete all the cruft used to build alpine-rvm-gcc
+# Don't delete bash - that stays the shell of the rvm user
+# procps stays too, just to stop the shell moaning so much
+RUN apk del gcc gnupg curl ruby musl-dev make linux-headers && \
+    rm -rf /var/cache/apk/*
