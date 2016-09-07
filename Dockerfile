@@ -23,7 +23,9 @@ RUN apk update && \
 # get latest bundler
 RUN gem install bundler --no-ri --no-rdoc
 
-#RUN bundle install
+RUN bundle install
 
 # remove deps
 #RUN apk remove gcc gnupg curl ruby musl-dev make linux-headers
+
+CMD "bundle exec puma"
