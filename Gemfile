@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby "2.3.1"
+ruby ">=2.2"
 
 gem 'mysql2', '~>0.4.3'
 gem 'rake', '~>11.1.1'
