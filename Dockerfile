@@ -1,5 +1,8 @@
 FROM alpine:3.3
 
+# TODO: expose 80
+EXPOSE 9292 9292
+
 RUN mkdir /app
 WORKDIR /app
 COPY . /app/
@@ -28,4 +31,4 @@ RUN bundle install
 # remove deps
 #RUN apk remove gcc gnupg curl ruby musl-dev make linux-headers
 
-CMD "bundle exec puma"
+CMD /usr/bin/bundle exec puma
