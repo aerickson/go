@@ -2,6 +2,9 @@
 
 set -e
 
-docker run -v `pwd`:/app -it aje/go
-docker run -v `pwd`:/app -it aje/go zsh
+docker run -v `pwd`:/app -it -P aje/go
+
+
+# docker run -v `pwd`:/app -it aje/go zsh
+
 #docker run -it aje/go zsh
