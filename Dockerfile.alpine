@@ -1,4 +1,4 @@
-# based on https://github.com/nicdoye/alpine-rvm/blob/master/Dockerfile
+# based on https://github.com/nicdoye/alpine-rvm-gcc/blob/master/Dockerfile
 
 # Pull base image
 FROM nicdoye/alpine-rvm-gcc
@@ -7,7 +7,7 @@ RUN apk update && \
     apk upgrade
 
 
-RUN su - rvm -c './.rvm/bin/rvm install 1.9 --disable-binary --movable --autolibs=0'
+RUN su - rvm -c './.rvm/bin/rvm install 2.3.1 --disable-binary --movable --autolibs=0'
 
 # aje: for interactive
 RUN apk add --no-cache zsh
