@@ -25,9 +25,11 @@ RUN apk update && \
 # get latest bundler
 RUN gem install bundler --no-ri --no-rdoc
 
+# copy app in and install deps
+# - in dev: mount over this directory
+# - in prod: run with the files in image (compose will preserve data)
 RUN mkdir -p /app
 COPY . /app/
-
 RUN bundle install
 
 # remove deps
