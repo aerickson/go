@@ -4,7 +4,7 @@ CMD /usr/bin/bundle exec puma
 WORKDIR /app
 
 # TODO: expose 80
-EXPOSE 9292 9292
+EXPOSE 9292
 
 ENV BUILD_PACKAGES curl-dev ruby-dev build-base
 ENV BUNDLER_DEP_PACKAGES mariadb-dev sqlite-dev
@@ -25,7 +25,7 @@ RUN apk update && \
 # get latest bundler
 RUN gem install bundler --no-ri --no-rdoc
 
-RUN mkdir /app
+RUN mkdir -p /app
 COPY . /app/
 
 RUN bundle install
