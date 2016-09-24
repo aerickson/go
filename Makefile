@@ -1,4 +1,4 @@
-.PHONY: build run
+.PHONY: build run browse
 
 image_name='aje/go'
 
